@@ -131,14 +131,27 @@ def show_product(p, show_stock_warning=True):
     print(f"  {p['id']:3d} │ {p['name']:<26} │ ${p['price']:6.2f} │ "
           f"stock: {p['stock']:3d}{warn} │ {p['category']}")
 
-def display_products(prods, title="Products"):
+def display_products(prods, title="Products", page=1, page_size=None):
     if not prods:
         cprint("  No products match your criteria.", "cyan")
-        return
-    print(f"  {title} ({len(prods)} shown / {len(products)} total)\n")
-    for p in prods:
+        return 1, 1
+
+    if page_size and page_size > 0:
+        total_pages = (len(prods) + page_size - 1) // page_size
+        page = max(1, min(page, total_pages))
+        start = (page - 1) * page_size
+        visible = prods[start:start + page_size]
+        print(f"  {title} ({len(visible)} shown • page {page}/{total_pages} • {len(prods)} matched / {len(products)} total)\n")
+    else:
+        total_pages = 1
+        page = 1
+        visible = prods
+        print(f"  {title} ({len(visible)} shown / {len(products)} total)\n")
+
+    for p in visible:
         show_product(p)
     print()
+    return total_pages, page
 
 def show_cart():
     if not cart:
@@ -244,6 +257,9 @@ def show_account():
 
 def browse_products():
     global browse_search, browse_category
+    page = 1
+    page_size = 10
+
     while True:
         filtered = get_filtered_products()
         header("Browse Products")
@@ -264,9 +280,11 @@ def browse_products():
             print("  Trending: " + ", ".join(p["name"] for p in top[:2]) + (f", {top[2]['name']}" if len(top)>2 else ""))
             print()
 
-        display_products(filtered)
+        total_pages, page = display_products(filtered, page=page, page_size=page_size)
 
         print("  [S] Search by name   [C] Filter category   [R] Reset filters")
+        if total_pages > 1:
+            print("  [P] Previous page    [N] Next page")
         print("  Or enter product number to view/add   [0] Back")
         action = input("\n→ ").strip().lower()
 
@@ -275,6 +293,7 @@ def browse_products():
         elif action == "s":
             term = input("  Search term: ").strip()
             browse_search = term
+            page = 1
             continue
         elif action == "c":
             cats = get_categories()
@@ -290,14 +309,30 @@ def browse_products():
                 continue
             if 1 <= idx <= len(cats):
                 browse_category = cats[idx-1]
+                page = 1
             else:
                 cprint("Invalid selection.", "red")
             continue
         elif action == "r":
             browse_search = ""
             browse_category = None
+            page = 1
             cprint("  Filters reset.", "green")
             pause(0.8)
+            continue
+        elif action == "n":
+            if page < total_pages:
+                page += 1
+            else:
+                cprint("  You are already on the last page.", "cyan")
+                pause(0.8)
+            continue
+        elif action == "p":
+            if page > 1:
+                page -= 1
+            else:
+                cprint("  You are already on the first page.", "cyan")
+                pause(0.8)
             continue
         else:
             # Assume product number
