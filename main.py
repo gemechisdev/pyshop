@@ -65,7 +65,7 @@ def clear():
     print("\033[2J\033[H", end="")     # better ANSI clear
 
 def cprint(text, color="white"):
-    colors = {"green": "\033[92m", "red": "\033[91m", "cyan": "\033[96m", "reset": "\033[0m"}
+    colors = {"green": "\033[92m", "red": "\033[91m", "cyan": "\033[96m", "yellow": "\033[93m", "magenta": "\033[95m", "reset": "\033[0m"}
     print(f"{colors.get(color, '')}{text}{colors['reset']}")
 
 def pause(t=0.7):
@@ -279,9 +279,9 @@ def browse_products():
         if browse_category:
             status.append(f"Category: {browse_category}")
         if status:
-            print("  Filters → " + " | ".join(status))
+            cprint("  Filters → " + " | ".join(status), "yellow")
         else:
-            print("  ═══════════ Showing all products ═══════════")
+            cprint("  ────────────── Showing all products ──────────────", "yellow")
         print()
 
         # Show trending hint
@@ -292,10 +292,10 @@ def browse_products():
 
         total_pages, page = display_products(filtered, page=page, page_size=page_size)
 
-        print("  [S] Search by name   [C] Filter category   [R] Reset filters")
+        cprint("  [S] Search by name   [C] Filter category   [R] Reset filters", "magenta")
         if total_pages > 1:
-            print("  [P] Previous page    [N] Next page")
-        print("  Or enter product number to view/add   [0] Back")
+            cprint("  [P] Previous page    [N] Next page", "magenta")
+        cprint("  Or enter product number to view/add   [0] Back", "magenta")
         action = input("\n→ ").strip().lower()
 
         if action == "0":
