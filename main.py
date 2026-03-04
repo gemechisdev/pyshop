@@ -175,10 +175,12 @@ def login():
     username = input("  Username: ").strip().lower()
     if username not in users:
         cprint("User not found.", "red")
+        pause(1.2)
         return False
     password = input("  Password: ").strip()
     if users[username]["password"] != password:
-        cprint("Incorrect password.", "red")
+        cprint("Incorrect password. Login failed.", "red")
+        pause(1.2)
         return False
     current_user = username
     cprint(f"\nWelcome back, {username}!", "green")
