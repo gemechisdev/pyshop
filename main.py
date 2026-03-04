@@ -1,5 +1,10 @@
-# PyShop v2 – Improved Terminal Shop
-# Single file • Pure stdlib Python • Beginner-friendly ecommerce practice
+# PyShop
+# Simple terminal shop developed in Python.
+# Features:
+# - User registration and login
+# - Product browsing with search and category filters
+# - Shopping cart and checkout with balance management
+# - Admin panel for product management
 
 import time
 import random
