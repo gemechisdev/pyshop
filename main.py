@@ -16,38 +16,39 @@ import sys
 
 products = [
     # Laptops
-    {"id": 1,  "name": "MacBook Air M2 (13-inch)",          "price": 1099.00, "stock": 8,  "category": "Laptops"},
-    {"id": 2,  "name": "Dell XPS 13 (2025)",                "price": 1299.00, "stock": 5,  "category": "Laptops"},
-    {"id": 3,  "name": "Lenovo ThinkPad X1 Carbon Gen 12",  "price": 1499.00, "stock": 6,  "category": "Laptops"},
-    {"id": 4,  "name": "ASUS ROG Zephyrus G14 (RTX 4060)",  "price": 1599.00, "stock": 4,  "category": "Gaming Laptops"},
+    {"id": 1,  "name": "MacBook Air M2",        "price": int(109900 * 0.8), "stock": 8,  "category": "Laptops"},
+    {"id": 2,  "name": "Dell XPS 13",           "price": int(129900 * 0.8), "stock": 5,  "category": "Laptops"},
+    {"id": 3,  "name": "ThinkPad X1 Carbon",     "price": int(149900 * 0.8), "stock": 6,  "category": "Laptops"},
+    {"id": 4,  "name": "ROG Zephyrus G14",       "price": int(159900 * 0.8), "stock": 4,  "category": "Laptops"},
 
     # Smartphones
-    {"id": 5,  "name": "iPhone 16 Pro (128GB)",             "price": 999.00,  "stock": 12, "category": "Smartphones"},
-    {"id": 6,  "name": "Samsung Galaxy S25 Ultra",          "price": 1299.00, "stock": 9,  "category": "Smartphones"},
-    {"id": 7,  "name": "Google Pixel 9 Pro",                "price": 899.00,  "stock": 11, "category": "Smartphones"},
-    {"id": 8,  "name": "Nothing Phone (3)",                 "price": 699.00,  "stock": 15, "category": "Smartphones"},
+    {"id": 5,  "name": "iPhone 16 Pro",          "price": int(99900 * 0.8),  "stock": 12, "category": "Smartphones"},
+    {"id": 6,  "name": "Galaxy S25 Ultra",       "price": int(129900 * 0.8), "stock": 9,  "category": "Smartphones"},
+    {"id": 7,  "name": "Pixel 9 Pro",            "price": int(89900 * 0.8),  "stock": 11, "category": "Smartphones"},
+    {"id": 8,  "name": "Nothing Phone 3",        "price": int(69900 * 0.8),  "stock": 15, "category": "Smartphones"},
 
     # Tablets & E-readers
-    {"id": 9,  "name": "iPad Air (M2, 11-inch)",            "price": 599.00,  "stock": 10, "category": "Tablets"},
-    {"id": 10, "name": "Samsung Galaxy Tab S10+",           "price": 849.00,  "stock": 7,  "category": "Tablets"},
-    {"id": 11, "name": "Kindle Paperwhite (2025)",          "price": 159.00,  "stock": 22, "category": "E-readers"},
+    {"id": 9,  "name": "iPad Air M2",            "price": int(59900 * 0.8),  "stock": 10, "category": "Tablets"},
+    {"id": 10, "name": "Galaxy Tab S10+",        "price": int(84900 * 0.8),  "stock": 7,  "category": "Tablets"},
+    {"id": 11, "name": "Kindle Paperwhite",      "price": int(15900 * 0.8),  "stock": 22, "category": "E-readers"},
 
     # Accessories & Peripherals
-    {"id": 12, "name": "AirPods Pro 2",                     "price": 249.00,  "stock": 18, "category": "Audio"},
-    {"id": 13, "name": "Sony WH-1000XM5 Headphones",        "price": 349.00,  "stock": 9,  "category": "Audio"},
-    {"id": 14, "name": "Logitech MX Master 3S Mouse",       "price": 99.00,   "stock": 25, "category": "Peripherals"},
-    {"id": 15, "name": "Keychron Q1 Pro (Mechanical)",      "price": 199.00,  "stock": 13, "category": "Peripherals"},
-    {"id": 16, "name": "Anker 737 Power Bank (24,000mAh)",  "price": 129.00,  "stock": 20, "category": "Charging"},
+    {"id": 12, "name": "AirPods Pro 2",          "price": int(24900 * 0.8),  "stock": 18, "category": "Audio"},
+    {"id": 13, "name": "Sony WH-1000XM5",        "price": int(34900 * 0.8),  "stock": 9,  "category": "Audio"},
+    {"id": 14, "name": "MX Master 3S Mouse",     "price": int(9900 * 0.8),   "stock": 25, "category": "Peripherals"},
+    {"id": 15, "name": "Keychron Q1 Pro",        "price": int(19900 * 0.8),  "stock": 13, "category": "Peripherals"},
+    {"id": 16, "name": "Anker 737 Power Bank",   "price": int(12900 * 0.8),  "stock": 20, "category": "Charging"},
 
     # Monitors & Storage
-    {"id": 17, "name": "LG 27GP950-B 27\" 4K 144Hz",        "price": 429.00,  "stock": 6,  "category": "Monitors"},
-    {"id": 18, "name": "Samsung Odyssey G7 32\" 4K",        "price": 699.00,  "stock": 5,  "category": "Monitors"},
-    {"id": 19, "name": "Samsung T9 Portable SSD 2TB",       "price": 229.00,  "stock": 14, "category": "Storage"},
-    {"id": 20, "name": "WD Black SN850X 2TB NVMe SSD",      "price": 189.00,  "stock": 17, "category": "Storage"},
+    {"id": 17, "name": "LG 27GP950-B 4K",        "price": int(42900 * 0.8),  "stock": 6,  "category": "Monitors"},
+    {"id": 18, "name": "Odyssey G7 32\" 4K",     "price": int(69900 * 0.8),  "stock": 5,  "category": "Monitors"},
+    {"id": 19, "name": "Samsung T9 SSD 2TB",     "price": int(22900 * 0.8),  "stock": 14, "category": "Storage"},
+    {"id": 20, "name": "WD SN850X 2TB NVMe",     "price": int(18900 * 0.8),  "stock": 17, "category": "Storage"},
 ]
 
 users = {
-    "admin": {"password": "admin123", "role": "admin", "balance": 9999.0, "history": []},
+    "admin": {"password": "admin123", "role": "admin", "balance": 999900, "history": []},
+    "gemechis": {"password": "Gemechis123", "role": "customer", "balance": 50000, "history": []},
 }
 
 # Current session
@@ -114,6 +115,9 @@ def get_yes_no(prompt):
             return False
         cprint("Please type yes or no.", "red")
 
+def etb(amount):
+    return f"{amount:.0f}ETB"
+
 # ────────────────────────────────────────────────
 #  PRODUCT DISPLAY
 # ────────────────────────────────────────────────
@@ -133,7 +137,7 @@ def get_filtered_products():
 
 def show_product(p, show_stock_warning=True):
     warn = " ⚠ LOW STOCK" if p["stock"] <= 3 and show_stock_warning else ""
-    print(f"  {p['id']:3d} │ {p['name']:<26} │ ${p['price']:6.2f} │ "
+    print(f"  {p['id']:3d} │ {p['name']:<26} │ {etb(p['price']):>9} │ "
           f"stock: {p['stock']:3d}{warn} │ {p['category']}")
 
 def display_products(prods, title="Products", page=1, page_size=None):
@@ -169,8 +173,8 @@ def show_cart():
         p = item["product"]
         subtotal = p["price"] * item["qty"]
         total += subtotal
-        print(f"  {i:2d} │ {p['name']:<26} × {item['qty']:2d} │ ${subtotal:7.2f}")
-    print(f"\n  Subtotal: ${total:8.2f}")
+        print(f"  {i:2d} │ {p['name']:<26} × {item['qty']:2d} │ {etb(subtotal):>9}")
+    print(f"\n  Subtotal: {etb(total)}")
     return total
 
 # ────────────────────────────────────────────────
@@ -196,7 +200,7 @@ def register():
         press_enter()
         return False
 
-    balance = round(random.uniform(20, 220), 2)
+    balance = random.randint(2000, 22000)
     users[username] = {
         "password": password,
         "role": "customer",
@@ -204,7 +208,7 @@ def register():
         "history": []
     }
     current_user = username
-    cprint(f"\nWelcome, {username}! Starter balance: ${balance:.2f}", "green")
+    cprint(f"\nWelcome, {username}! Starter balance: {etb(balance)}", "green")
     pause(2.0)
     return True
 
@@ -229,17 +233,18 @@ def login():
 def show_account():
     header(f"My Account • {current_user}")
     u = users[current_user]
-    print(f"  Balance     : ${u['balance']:.2f}")
+    print(f"  Balance     : {etb(u['balance'])}")
     print(f"  Orders made : {len(u['history'])}")
     print("\n  1. Add funds")
     print("  2. View order history")
     print("  0. Back")
     ch = input("\n→ ").strip()
     if ch == "1":
-        amt = get_float("  Amount to add ($): ")
-        if amt > 0:
+        amt_etb = get_float("  Amount to add (ETB): ")
+        if amt_etb > 0:
+            amt = amt_etb
             u["balance"] += amt
-            cprint(f"  Added ${amt:.2f}. New balance: ${u['balance']:.2f}", "green")
+            cprint(f"  Added {etb(amt)}. New balance: {etb(u['balance'])}", "green")
         else:
             cprint("  Amount must be positive.", "red")
         press_enter()
@@ -249,7 +254,7 @@ def show_account():
             cprint("  No orders yet.", "cyan")
         else:
             for i, order in enumerate(u["history"], 1):
-                print(f"  #{i}  {order['date']}  ${order['total']:.2f}")
+                print(f"  #{i}  {order['date']}  {etb(order['total'])}")
                 for item in order["items"]:
                     print(f"      • {item['qty']}× {item['name']}")
                 print()
@@ -276,13 +281,13 @@ def browse_products():
         if status:
             print("  Filters → " + " | ".join(status))
         else:
-            print("  Showing all products")
+            print("  ═══════════ Showing all products ═══════════")
         print()
 
         # Show trending hint
         if products:
             top = sorted(products, key=lambda p: p["stock"], reverse=True)[:3]
-            print("  Trending: " + ", ".join(p["name"] for p in top[:2]) + (f", {top[2]['name']}" if len(top)>2 else ""))
+            cprint("  Trending: " + ", ".join(p["name"] for p in top[:2]) + (f", {top[2]['name']}" if len(top)>2 else ""), "cyan")
             print()
 
         total_pages, page = display_products(filtered, page=page, page_size=page_size)
@@ -323,21 +328,21 @@ def browse_products():
             browse_category = None
             page = 1
             cprint("  Filters reset.", "green")
-            pause(0.8)
+            pause(1.3)
             continue
         elif action == "n":
             if page < total_pages:
                 page += 1
             else:
                 cprint("  You are already on the last page.", "cyan")
-                pause(0.8)
+                pause(1.3)
             continue
         elif action == "p":
             if page > 1:
                 page -= 1
             else:
                 cprint("  You are already on the first page.", "cyan")
-                pause(0.8)
+                pause(1.3)
             continue
         else:
             # Assume product number
@@ -346,7 +351,7 @@ def browse_products():
                 prod = next((p for p in products if p["id"] == pid), None)
                 if not prod:
                     cprint("Product not found.", "red")
-                    pause(1.5)
+                    pause(1.3)
                     continue
 
                 header(prod["name"])
@@ -358,7 +363,7 @@ def browse_products():
                     qty = get_int("  Quantity: ", 1, prod["stock"])
                     cart.append({"product": prod, "qty": qty})
                     cprint(f"  Added {qty} × {prod['name']} to cart", "green")
-                pause(1.5)
+                pause(1.3)
             except ValueError:
                 invalid()
 
@@ -388,7 +393,7 @@ def admin_menu():
         elif ch == "5":
             header("Users")
             for uname, data in users.items():
-                print(f"  {uname:12} | {data['role']:8} | ${data['balance']:.2f} | orders: {len(data['history'])}")
+                print(f"  {uname:12} | {data['role']:8} | {etb(data['balance']):>9} | orders: {len(data['history'])}")
             press_enter()
         else:
             invalid()
@@ -399,7 +404,7 @@ def add_product():
     if not name: 
         cprint("Name required.", "red")
         return
-    price = get_float("  Price ($): ")
+    price = get_float("  Price (ETB): ")
     stock = get_int(  "  Stock: ", 0)
     cat   = input(    "  Category: ").strip() or "General"
 
@@ -407,7 +412,7 @@ def add_product():
     products.append({
         "id": new_id,
         "name": name,
-        "price": round(price, 2),
+        "price": round(price),
         "stock": stock,
         "category": cat
     })
@@ -431,10 +436,10 @@ def edit_product():
     name = input(f"  New name (enter to keep '{prod['name']}'): ").strip()
     if name: prod["name"] = name
 
-    price_str = input(f"  New price (enter to keep ${prod['price']:.2f}): ").strip()
+    price_str = input(f"  New price (enter to keep {etb(prod['price'])}): ").strip()
     if price_str:
         try:
-            prod["price"] = round(float(price_str), 2)
+            prod["price"] = round(float(price_str))
         except:
             cprint("Invalid price – kept old value.", "red")
 
@@ -478,9 +483,9 @@ def shop_menu():
         print("  2. View cart & checkout")
         print("  3. My Account")
         if users[current_user]["role"] == "admin":
-            print("  4. Back to main menu")
+            print("  0. Back to main menu")
         else:
-            print("  4. Logout")
+            print("  0. Logout")
         ch = input("\n→ ").strip()
 
         if ch == "1":
@@ -496,12 +501,12 @@ def shop_menu():
             discount = 0.0
             if subtotal > 150:
                 discount = subtotal * 0.05
-                print(f"  → 5% discount applied (-${discount:.2f})")
+                print(f"  → 5% discount applied (-{etb(discount)})")
                 total = subtotal - discount
             else:
                 total = subtotal
-            print(f"  Final total: ${total:.2f}")
-            print(f"  Your balance: ${users[current_user]['balance']:.2f}\n")
+            print(f"  Final total: {etb(total)}")
+            print(f"  Your balance: {etb(users[current_user]['balance'])}\n")
 
             if total > users[current_user]["balance"]:
                 cprint("  Not enough funds!", "red")
@@ -524,7 +529,7 @@ def shop_menu():
 
                 cprint("\n" + "═"*70, "green")
                 cprint("  PURCHASE SUCCESSFUL!  Thank you for shopping!", "green")
-                cprint(f"  New balance: ${users[current_user]['balance']:.2f}", "green")
+                cprint(f"  New balance: {etb(users[current_user]['balance'])}", "green")
                 cprint("═"*70 + "\n", "green")
                 cart.clear()
                 pause(2.5)
@@ -534,7 +539,7 @@ def shop_menu():
 
         elif ch == "3":
             show_account()
-        elif ch == "4":
+        elif ch == "0":
             if users[current_user]["role"] == "admin":
                 cprint("Returning to main menu...", "cyan")
                 browse_search = ""
