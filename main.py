@@ -10,14 +10,35 @@ import sys
 # ────────────────────────────────────────────────
 
 products = [
-    {"id": 1,  "name": "Wireless Earbuds",      "price":  89.90, "stock": 14, "category": "Audio"},
-    {"id": 2,  "name": "Mechanical Keyboard",    "price": 129.00, "stock":  7, "category": "Peripherals"},
-    {"id": 3,  "name": "27\" 1440p Monitor",     "price": 249.99, "stock":  5, "category": "Display"},
-    {"id": 4,  "name": "USB-C 100W Charger",     "price":  59.00, "stock": 22, "category": "Charging"},
-    {"id": 5,  "name": "Portable SSD 1TB",       "price": 109.90, "stock": 11, "category": "Storage"},
-    {"id": 6,  "name": "RGB Mouse Pad XXL",      "price":  24.99, "stock": 38, "category": "Peripherals"},
-    {"id": 7,  "name": "4K Webcam",              "price":  79.50, "stock":  9, "category": "Camera"},
-    {"id": 8,  "name": "Cable Management Box",   "price":  19.90, "stock": 47, "category": "Accessories"},
+    # Laptops
+    {"id": 1,  "name": "MacBook Air M2 (13-inch)",          "price": 1099.00, "stock": 8,  "category": "Laptops"},
+    {"id": 2,  "name": "Dell XPS 13 (2025)",                "price": 1299.00, "stock": 5,  "category": "Laptops"},
+    {"id": 3,  "name": "Lenovo ThinkPad X1 Carbon Gen 12",  "price": 1499.00, "stock": 6,  "category": "Laptops"},
+    {"id": 4,  "name": "ASUS ROG Zephyrus G14 (RTX 4060)",  "price": 1599.00, "stock": 4,  "category": "Gaming Laptops"},
+
+    # Smartphones
+    {"id": 5,  "name": "iPhone 16 Pro (128GB)",             "price": 999.00,  "stock": 12, "category": "Smartphones"},
+    {"id": 6,  "name": "Samsung Galaxy S25 Ultra",          "price": 1299.00, "stock": 9,  "category": "Smartphones"},
+    {"id": 7,  "name": "Google Pixel 9 Pro",                "price": 899.00,  "stock": 11, "category": "Smartphones"},
+    {"id": 8,  "name": "Nothing Phone (3)",                 "price": 699.00,  "stock": 15, "category": "Smartphones"},
+
+    # Tablets & E-readers
+    {"id": 9,  "name": "iPad Air (M2, 11-inch)",            "price": 599.00,  "stock": 10, "category": "Tablets"},
+    {"id": 10, "name": "Samsung Galaxy Tab S10+",           "price": 849.00,  "stock": 7,  "category": "Tablets"},
+    {"id": 11, "name": "Kindle Paperwhite (2025)",          "price": 159.00,  "stock": 22, "category": "E-readers"},
+
+    # Accessories & Peripherals
+    {"id": 12, "name": "AirPods Pro 2",                     "price": 249.00,  "stock": 18, "category": "Audio"},
+    {"id": 13, "name": "Sony WH-1000XM5 Headphones",        "price": 349.00,  "stock": 9,  "category": "Audio"},
+    {"id": 14, "name": "Logitech MX Master 3S Mouse",       "price": 99.00,   "stock": 25, "category": "Peripherals"},
+    {"id": 15, "name": "Keychron Q1 Pro (Mechanical)",      "price": 199.00,  "stock": 13, "category": "Peripherals"},
+    {"id": 16, "name": "Anker 737 Power Bank (24,000mAh)",  "price": 129.00,  "stock": 20, "category": "Charging"},
+
+    # Monitors & Storage
+    {"id": 17, "name": "LG 27GP950-B 27\" 4K 144Hz",        "price": 429.00,  "stock": 6,  "category": "Monitors"},
+    {"id": 18, "name": "Samsung Odyssey G7 32\" 4K",        "price": 699.00,  "stock": 5,  "category": "Monitors"},
+    {"id": 19, "name": "Samsung T9 Portable SSD 2TB",       "price": 229.00,  "stock": 14, "category": "Storage"},
+    {"id": 20, "name": "WD Black SN850X 2TB NVMe SSD",      "price": 189.00,  "stock": 17, "category": "Storage"},
 ]
 
 users = {
