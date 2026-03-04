@@ -166,7 +166,7 @@ def register():
     }
     current_user = username
     cprint(f"\nWelcome, {username}! Starter balance: ${balance:.2f}", "green")
-    pause(1.6)
+    pause(2.0)
     return True
 
 def login():
@@ -175,16 +175,16 @@ def login():
     username = input("  Username: ").strip().lower()
     if username not in users:
         cprint("User not found.", "red")
-        pause(1.2)
+        pause(2.0)
         return False
     password = input("  Password: ").strip()
     if users[username]["password"] != password:
         cprint("Incorrect password. Login failed.", "red")
-        pause(1.2)
+        pause(2.0)
         return False
     current_user = username
     cprint(f"\nWelcome back, {username}!", "green")
-    pause(1.2)
+    pause(2.0)
     return True
 
 def show_account():
@@ -285,7 +285,7 @@ def browse_products():
                 prod = next((p for p in products if p["id"] == pid), None)
                 if not prod:
                     cprint("Product not found.", "red")
-                    pause(1.2)
+                    pause(1.5)
                     continue
 
                 header(prod["name"])
@@ -297,7 +297,7 @@ def browse_products():
                     qty = get_int("  Quantity: ", 1, prod["stock"])
                     cart.append({"product": prod, "qty": qty})
                     cprint(f"  Added {qty} × {prod['name']} to cart", "green")
-                pause(1.3)
+                pause(1.5)
             except ValueError:
                 invalid()
 
@@ -466,10 +466,10 @@ def shop_menu():
                 cprint(f"  New balance: ${users[current_user]['balance']:.2f}", "green")
                 cprint("═"*70 + "\n", "green")
                 cart.clear()
-                pause(2.2)
+                pause(2.5)
             else:
                 cprint("  Purchase cancelled.", "cyan")
-                pause(1.0)
+                pause(2.0)
 
         elif ch == "3":
             show_account()
@@ -478,14 +478,14 @@ def shop_menu():
                 cprint("Returning to main menu...", "cyan")
                 browse_search = ""
                 browse_category = None
-                pause(0.9)
+                pause(1.0)
                 break
             else:
                 cprint(f"\n{current_user} logged out.\n", "cyan")
                 browse_search = ""
                 browse_category = None
                 current_user = None
-                pause(0.9)
+                pause(1.0)
                 break
         else:
             invalid()
@@ -535,7 +535,7 @@ def main():
             elif choice == "0":
                 cprint(f"\n{current_user} logged out.\n", "cyan")
                 current_user = None
-                pause(0.8)
+                pause(1.0)
             else:
                 invalid()
         else:
