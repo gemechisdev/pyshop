@@ -405,7 +405,7 @@ def delete_product():
 # ────────────────────────────────────────────────
 
 def shop_menu():
-    global browse_search, browse_category, cart
+    global current_user, browse_search, browse_category, cart
     while True:
         header(f"PyShop  •  {current_user}")
         total_items = sum(p["stock"] for p in products)
@@ -414,7 +414,10 @@ def shop_menu():
         print("  1. Browse products")
         print("  2. View cart & checkout")
         print("  3. My Account")
-        print("  4. Logout")
+        if users[current_user]["role"] == "admin":
+            print("  4. Back to main menu")
+        else:
+            print("  4. Logout")
         ch = input("\n→ ").strip()
 
         if ch == "1":
@@ -469,11 +472,19 @@ def shop_menu():
         elif ch == "3":
             show_account()
         elif ch == "4":
-            cprint("Logging out...", "cyan")
-            browse_search = ""
-            browse_category = None
-            pause(0.9)
-            break
+            if users[current_user]["role"] == "admin":
+                cprint("Returning to main menu...", "cyan")
+                browse_search = ""
+                browse_category = None
+                pause(0.9)
+                break
+            else:
+                cprint(f"\n{current_user} logged out.\n", "cyan")
+                browse_search = ""
+                browse_category = None
+                current_user = None
+                pause(0.9)
+                break
         else:
             invalid()
 
@@ -485,6 +496,10 @@ def main():
     global current_user
 
     while True:
+        if current_user and users[current_user]["role"] != "admin":
+            shop_menu()
+            continue
+
         clear()
         print("╔" + "═" * 65 + "╗")
         print("║" + " " * 65 + "║")
@@ -501,7 +516,7 @@ def main():
             print("  1. Enter shop")
             if users[current_user]["role"] == "admin":
                 print("  2. Admin panel")
-            print("  0. Logout & exit")
+            print("  0. Logout")
         else:
             print("  1. Login")
             print("  2. Register")
@@ -516,17 +531,16 @@ def main():
             elif choice == "2" and users[current_user]["role"] == "admin":
                 admin_menu()
             elif choice == "0":
-                cprint("\nThank you for visiting PyShop. Goodbye!\n", "cyan")
-                break
+                cprint(f"\n{current_user} logged out.\n", "cyan")
+                current_user = None
+                pause(0.8)
             else:
                 invalid()
         else:
             if choice == "1":
-                if login():
-                    shop_menu()
+                login()
             elif choice == "2":
-                if register():
-                    shop_menu()
+                register()
             elif choice == "0":
                 cprint("\nGoodbye!\n", "cyan")
                 break
